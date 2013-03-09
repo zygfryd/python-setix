@@ -1,13 +1,16 @@
+import os
+
 from distutils.core import setup
 
 setup(
     name = "setix",
     packages = ["setix", "setix.backends"],
-    version = "0.8",
+    version = "0.8.1",
     description = "Fast data structures for finding intersecting sets and similar strings",
     author = "Marcin Pertek",
     author_email = "kat.zygfryd@gmail.com",
-    url = "http://github.com/zygfryd/setix",
+    license = "MIT",
+    url = "http://github.com/zygfryd/python-setix",
     keywords = ["set", "intersection", "index", "trgm", "fuzzy"],
     classifiers = [
         "Programming Language :: Python",
@@ -24,6 +27,5 @@ setup(
         "Topic :: Scientific/Engineering :: Information Analysis",
         ],
     requires = ["numpy (>=1.5.0)", "six"],
-    long_description = """\
-"""
+    long_description = open(os.path.join(os.path.dirname(__file__), "README.rst"), "rb").read ()
 )
