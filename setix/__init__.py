@@ -143,7 +143,7 @@ class SetIntersectionIndexBase (object):
     def find (self, iterable, threshold=1, max_results=None):
         """
         Find sets in the index with at least `threshold` intersections with the given `iterable`.
-        Returns: a SearchResults iterable returning (payload, number of intersections) tuples.
+        Returns: a SearchResults iterable returning (number of intersections, [list of payloads]) tuples.
         
         If threshold is negative, the number of unique symbols in `iterable` is added to it.
         """
@@ -153,7 +153,7 @@ class SetIntersectionIndexBase (object):
     def find_similar (self, iterable, threshold=0.3):
         """
         Find sets in the index with at least `threshold` similarity score to the given `iterable`.
-        Returns: a SearchResults iterable returning (payload, similarity) tuples.
+        Returns: a SearchResults iterable returning (similarity, [list of payloads]) tuples.
         
         The similarity score is computed as:
                 i

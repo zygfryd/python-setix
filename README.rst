@@ -24,7 +24,9 @@ Using a set index:
     ix.add ((2, 3, 4))
     
     ix.find ((1, 2), 1).get_list()
-    # returns [(2, [(1, 2, 3)]), (2, [(1, 2, 4)]), (1, [(2, 3, 4)]]
+    # returns [(2, [(1, 2, 3)]),
+    #          (2, [(1, 2, 4)]),
+    #          (1, [(2, 3, 4)])]
     # (the order of the first two results can change as they have equal scores)
 
 Using a trigram index:
@@ -54,8 +56,8 @@ of misspellings.
 ..  code-block:: python
 
     ix.find ("stremgth", threshold=-3).get_list()
-    # returns [(6, ["strength and honor"])
-    #          (6, ["strength"]),
+    # returns [(6, ["strength and honor"]),
+    #          (6, ["strength"])]
 
 Benchmarks
 ==========

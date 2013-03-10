@@ -8,7 +8,7 @@ from .. import SetIntersectionIndexBase, SearchResults
 
 def _check_numpy ():
     missing = []
-    for fn in ():
+    for fn in ("zeros", "empty", "digitize", "resize", "concatenate", "unique", "bincount", "argsort"):
         if not getattr (numpy, fn, False):
             missing.append (fn)
     if missing:
@@ -249,6 +249,9 @@ class SetIntersectionIndex (SetIntersectionIndexBase):
             r_counts = scores[sort]
             
             return zip (r_counts, self._sets[r_sids])
+        
+        def __len__ (self):
+            return self._scores.size
     
     def find (self, iterable, threshold=1, max_results=None):
         if not isinstance (threshold, numbers.Number):

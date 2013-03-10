@@ -5,7 +5,7 @@ from distutils.core import setup
 setup(
     name = "setix",
     packages = ["setix", "setix.backends"],
-    version = "0.8.1",
+    version = "0.8.2",
     description = "Fast data structures for finding intersecting sets and similar strings",
     author = "Marcin Pertek",
     author_email = "kat.zygfryd@gmail.com",
