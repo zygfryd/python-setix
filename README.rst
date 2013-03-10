@@ -107,3 +107,6 @@ Python 3.2
    
     In [3]: %timeit list (tests.dvd_db_test.titles.find("daft punk", 1))
     10 loops, best of 3: 86.3 ms per loop
+
+DVD title list used in the benchmark was obtained from http://www.hometheaterinfo.com/dvdlist.htm
+Thanks for making it available.
