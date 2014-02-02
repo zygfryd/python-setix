@@ -47,6 +47,16 @@ class SearchResults (object):
     def __iter__ (self):
         return self.get ()
 
+class EmptySearchResults (SearchResults):
+    def get (self, max_results=None):
+        return ()
+    
+    def get_list (self, max_results=None):
+        return []
+    
+    def __len__ (self):
+        return 0
+
 class SetIntersectionIndexBase (object):
     _SENTINEL = []
     

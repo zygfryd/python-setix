@@ -4,7 +4,7 @@ import math
 import struct
 from six.moves import zip
 
-from .. import SetIntersectionIndexBase, SearchResults
+from .. import SetIntersectionIndexBase, SearchResults, EmptySearchResults
 
 def _check_numpy ():
     missing = []
@@ -267,6 +267,9 @@ class SetIntersectionIndex (SetIntersectionIndexBase):
             if threshold < 1:
                 raise ValueError ("threshold")
         
+        if len (counts) == 0:
+            return EmptySearchResults ()
+        
         mask = counts >= threshold
         counts = counts[mask]
         sids = sids[mask]
@@ -284,6 +287,10 @@ class SetIntersectionIndex (SetIntersectionIndexBase):
             raise RuntimeError ("find_similar support disabled")
         
         L, sids, indices, counts = self._find (iterable)
+        
+        if len (counts) == 0:
+            return EmptySearchResults ()
+        
         smls = counts / (self._set_sizes[sids] + (L * 1.0) - counts)
         
         mask = smls >= threshold
@@ -297,6 +304,9 @@ class SetIntersectionIndex (SetIntersectionIndexBase):
             raise RuntimeError ("most_frequent support disabled")
         
         counts = self._symbol_counts
+        if self._num_sets == 0:
+            return
+        
         sort = numpy.argsort (counts[0:len(self._symbols)])
         limit = counts[sort[-1]] * 1.0 * threshold
         
